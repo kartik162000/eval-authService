@@ -22,7 +22,7 @@ const login=async (req,res)=>{
 }
 const verifyToken=async (req,res)=>{
     try{
-        const verify = await services.verifyToken(req.headers.authorization.split(' ')[1]);
+        const verify = await services.verifyToken(req.headers.authorization);
         res.status(200).json(verify);
         }
     catch(error){

@@ -33,6 +33,9 @@ const loginVerification = async(data) => {
 
 const verifyToken = async(token) => {
         const decoded = jwt.verify(token,process.env.JWT_SECRET);
+        console.log(decoded,"Hiiii");
+        if(!decoded)
+            return {success:false};
         const user = await db.User.findOne({ where: { email: decoded.email } });
         if(user){
             return {success:true,user_id:decoded.user_id};
